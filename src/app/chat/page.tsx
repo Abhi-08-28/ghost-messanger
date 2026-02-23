@@ -18,7 +18,10 @@ export default function Chat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    socket = io("http://localhost:3000");
+  socket = io({
+    transports: ["websocket"],
+    secure: true,
+  });
 
     const randomName =
       "Ghost-" + Math.floor(Math.random() * 10000);
